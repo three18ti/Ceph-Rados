@@ -2,6 +2,7 @@ Revision history for Perl extension Ceph::RADOS.
 
 0.01  Mon Aug 29 09:24:47 2011
 	- AUTHOR         => 'mlsorensen <mlsorensen@mlsorensen.com>'
+	- Original Source => http://www.spinics.net/lists/ceph-devel/msg04147.html
 	- original version; created by h2xs 1.23 with options
 		-PAXn Ceph::RADOS
 
