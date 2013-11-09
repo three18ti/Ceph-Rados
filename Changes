@@ -7,3 +7,8 @@ Revision history for Perl extension Ceph::RADOS.
 
 0.001 Sat 9 Nov. 16:11:51 2013
     - Converted distribution to use Dist::Zilla
+
+0.002 Sat 9 Nov. 16:17:21 2013
+    - resolved issue with list_pools causing segfault
+    - credit goes to oiskuu of perlmonks:
+        - http://www.perlmonks.org/?node_id=1061612

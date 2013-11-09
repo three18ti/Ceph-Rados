@@ -4,13 +4,17 @@ use strict;
 use Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
-$VERSION = '0.01';
+$VERSION = '0.002';
 use Inline C        => 'DATA',
-           VERSION  => '0.01',
+           VERSION  => '0.002',
            NAME     => 'Ceph::RADOS',
 	   LIBS	    => '-L/usr/lib -lrados',
            INC      => '-I/usr/include/rados',
-	   TYPEMAPS => 'lib/Ceph/types';
+	   TYPEMAPS => 'lib/Ceph/types',
+		BUILD_NOISY => 1,
+		WARNINGS => 1,
+		PRINT_INFO => 1,
+;
 
 sub new {
   my $self = {};
@@ -188,16 +192,19 @@ int delete_pool_c (rados_t clu, char * poolname) {
 }
 
 void list_pools_c (rados_t clu) {
-  int buf_sz = rados_pool_list(clu,NULL,0);
+  Inline_Stack_Vars;
+
+  size_t buf_sz = rados_pool_list(clu,"",0);
+  // fprintf(stderr, "rados_pool_list()=%d\n", buf_sz);
+
   char buf[buf_sz];
-  int r = rados_pool_list(clu,buf,buf_sz);
+  size_t r = rados_pool_list(clu,buf,buf_sz);
 
   if (r != buf_sz) {
     printf("buffer size mismatch: got %d the first time, but %d "
     "the second.\n", buf_sz, r);
   }
 
-  Inline_Stack_Vars;
   Inline_Stack_Reset;
 
   const char *b = buf;
