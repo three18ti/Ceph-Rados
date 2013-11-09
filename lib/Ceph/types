@@ -1,0 +1,12 @@
+uint64_t	T_UINT64_T
+rados_t		T_PTRREF
+
+INPUT
+T_UINT64_T
+	$var = (uint64_t)SvNV($arg);
+
+
+OUTPUT
+T_UINT64_T
+	sizeof(UV) == 8 ? sv_setuv($arg,(UV)$var) : sv_setnv($arg,(NV)$var);
+

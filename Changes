@@ -1,0 +1,9 @@
+Revision history for Perl extension Ceph::RADOS.
+
+0.01  Mon Aug 29 09:24:47 2011
+	- AUTHOR         => 'mlsorensen <mlsorensen@mlsorensen.com>'
+	- original version; created by h2xs 1.23 with options
+		-PAXn Ceph::RADOS
+
+0.001 Sat 9 Nov. 16:11:51 2013
+    - Converted distribution to use Dist::Zilla
