@@ -6,14 +6,12 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 $VERSION = '0.002';
 use Inline C        => 'DATA',
-           VERSION  => '0.002',
            NAME     => 'Ceph::RADOS',
 	   LIBS	    => '-L/usr/lib -lrados',
            INC      => '-I/usr/include/rados',
 	   TYPEMAPS => 'lib/Ceph/types',
 		BUILD_NOISY => 1,
 		WARNINGS => 1,
-		PRINT_INFO => 1,
 ;
 
 sub new {
@@ -201,7 +199,7 @@ void list_pools_c (rados_t clu) {
   size_t r = rados_pool_list(clu,buf,buf_sz);
 
   if (r != buf_sz) {
-    printf("buffer size mismatch: got %d the first time, but %d "
+    printf("buffer size mismatch: got %zu the first time, but %zu "
     "the second.\n", buf_sz, r);
   }
 
