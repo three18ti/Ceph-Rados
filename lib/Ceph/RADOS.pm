@@ -6,6 +6,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 $VERSION = '0.002';
 use Inline C        => 'DATA',
+		VERSION => '0.02',
            NAME     => 'Ceph::RADOS',
 	   LIBS	    => '-L/usr/lib -lrados',
            INC      => '-I/usr/include/rados',
